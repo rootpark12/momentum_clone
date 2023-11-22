@@ -648,3 +648,5 @@ localStorage.removeItem //삭제
 localStorage.setItem("username",username); //key,value
 
 Loading Username
+
+4.7 super recap 반복!
