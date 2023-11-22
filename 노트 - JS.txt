@@ -650,3 +650,43 @@ localStorage.setItem("username",username); //key,value
 Loading Username
 
 4.7 super recap 반복!
+
+
+Intervals 
+Interval ~ 매번 일어나야 하는일
+setInterval(sayHello,5000); 
+//5000s(5초) 마다 sayHello 라는 function 실행 (반복 실행)
+
+Timeouts and Date
+setTimeout(sayHello,5000);
+//5000s(5초) 뒤에 sayHello 라는 function 실행 (1번만 실행)
+
+
+function getClock(){
+    const date = new Date();
+    clock.innerText = `${date.getHours()}:${date.getMinutes()}:${date.getUTCSeconds()}`;
+}
+setInterval(getClock,1000);
+1초마다 시간 호출
+문제점 ~ 실행하고 1초 뒤에 시간을 보여준다
+setInterval 전에 시간을 불러줌으로 해결
+
+PadStart 
+한자리숫자 앞에 0이 붙는식으로 표기할 것
+
+"1".padStart(2,"0"); //01
+"hello".padstart(20,"x")//xxxxxxxxxxxxxxxhello
+//String의 시작(start)부분에 padding을 추가한다. 
+//1이라는 문자열의 길이가 2여야 한다, 아닐경우 나머지는 0으로 채운다.
+
+function getClock(){
+    const date = new Date();
+    const hours = String(date.getHours()).padStart(2,"0");
+    const minutes = String(date.getMinutes()).padStart(2,"0");
+    const seconds = String(date.getSeconds()).padStart(2,"0");
+    clock.innerText = `${hours}:${minutes}:${seconds}`;
+}
+getClock();
+setInterval(getClock,1000);
+
+//date에서 받아온 number를 String으로 받은뒤, padstart 적용
