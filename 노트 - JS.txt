@@ -763,3 +763,20 @@ filter -> 선택옵션
 filter() 메서드는 주어진 함수의 테스트를 통과하는 모든 요소를
 모아 새로운 배열로 반환합니다.
 
+Geolocation
+
+navigator.geolocation.getCurrentPosition();
+//현재 위치를 가져오는 메서드
+//2개의 argument필요, 성공/실패 시 실행할 function들
+//성공시 유저의 위치정보를 받는다
+
+function onGeoOk(position){
+    const lat = position.coords.latitude;
+    const lng = position.coords.longitude;
+    console.log("You live it,",lat,lng);
+    //You live it, 37.470208 126.7924992    
+}
+
+ Weather API
+ 개발자도구-네트워크에서 API의 요청, 반환값을 확인할 수 있다
+ fetch ~ 다시보기
