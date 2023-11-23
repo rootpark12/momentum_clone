@@ -711,3 +711,55 @@ const bgImage = document.createElement("img");
 bgImage.src = `img/${chosenImage};
 document.body.appendChild(bgImage);// 만든요소를 html에 추가
 
+Deleting To Do
+각 li마다 버튼이 생기게 했다. ~ 어떤 li의 버튼을 눌렀는지 알아야 한다
+콘솔에서 target을 확인하여, 어디서 이벤트가 발생했는지 찾을 수 있다.
+console.dir(event.target.parentElement.innerText);
+
+ Saving To Dos
+ localStorage로 브라우저에 저장할수 있다
+
+ - newTodo가 그려질때마다
+ - 그 텍스트를 toDos array에 push해야 한다.
+
+ ~localStorage에는 텍스트만 저장이 가능하다.
+localStorage.setItem("todos",toDos);
+-> todos/ a,b,c,d...
+저장은 되지만 화면에 출력할 수 없다
+다시 내용을 입력하면 기존에 저장한 데이터들이 없어진다.
+~ 단순 텍스트가 아닌 array 형태로 저장할 필요
+"todos",JSON.stringify(toDos)
+->todos/"["a","b","c"]"
+
+ Loading To Dos
+ JSON.parse()를 통해 String을 object로 바꿀수 있다
+ todos/"["a","b","c"]" -> ["a","b","c"]
+
+ paredToDos.array.forEach 
+ //function을 array에 있는 각각의 item에 대해서 실행해준다
+ paredToDos.forEach(paintTodo);
+ //paintTodo("a"),paintTodo("b"),paintTodo("c")...
+
+ 그러나 새로운 아이템을 추가하면 기존의 것이 덮어씌워지는 문제점이 있다.
+ const toDos = []; 
+ 어플리케이션이 시작할때마다 toDos가 비어있기 때문
+
+ let toDos = [];//업데이트 가능한 let으로 바꾸고
+ toDos = paredToDos;//전에 있던 toDos복원
+
+ Deleting To Dos
+ 리스트 뿐 아니라 로컬스토리지에서도 삭제를 할 수 있어야 한다.
+ 특정 리스트만을 삭제할수 있게 하기위해, 텍스트가 아닌 Object로 저장할 것
+ Id를 부여하여 각 li item을 구별 할 수 있다.
+const newToDoObj = {
+        text:newTodo,
+        id:Date.now(),
+    };
+ li.id = newToDo.id; //<li id="123456">
+
+ 이제 삭제버튼을 클릭한 li의 아이디를 얻어야 한다
+
+filter -> 선택옵션
+filter() 메서드는 주어진 함수의 테스트를 통과하는 모든 요소를
+모아 새로운 배열로 반환합니다.
+
